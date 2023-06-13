@@ -14,15 +14,26 @@ function onClick(evt) {
     const currentImg = evt.target.dataset.source;
     
     const instance = basicLightbox.create(`
-    <img src="${currentImg}"  width="800" height="600">
- `);
+    <img src="${currentImg}"  width="800" height="600"> `);
+
     instance.show(); 
 };
-
-window.addEventListener('keydown', onKeydown);
-function onKeydown(evt) {
-    if (evt.code === "Escape") {
-        instance.close();
-    }
-    console.log(evt)
-}
+// ------------------------
+// window.addEventListener('keydown', onKeydown),
+// function onKeydown(evt) {
+//     if (evt.code === "Escape") {
+//         instance.close();
+//     }
+// }
+// -----------------------
+//          {
+//         onShow: (instance) => {
+//          const closeEl = evt.code === "Escape"
+//         instance.element().querySelector('closeEl').onclick = instance.close
+//     }
+// }
+// ----------------------------------
+//     instance.show(() => {
+//         const closeEl = evt.code === "Escape"
+// 	instance.element().querySelector( 'closeEl' ).close();
+// });
