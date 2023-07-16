@@ -1,7 +1,6 @@
 import { galleryItems } from './gallery-items.js';
 // Change code below this line
 
-// console.log(galleryItems);
 const galleryEl = document.querySelector('.gallery');
 const markup = galleryItems.map(({ preview, original, description }) => `<li class="gallery__item"><a class="gallery__link" href="${original}">
 <img class="gallery__image" src="${preview}" data-source="${original}" alt="${description}"/></a></li>`);
@@ -17,23 +16,15 @@ function onClick(evt) {
     <img src="${currentImg}"  width="800" height="600"> `);
 
     instance.show(); 
+
+    document.addEventListener('keydown', onKeyPress);
+
+    function onKeyPress(event) {
+        if (event.key === 'Escape') {
+            instance.close();
+            document.removeEventListener('keydown', onKeyPress);
+        }
+    }
+
 };
-// ------------------------
-// window.addEventListener('keydown', onKeydown),
-// function onKeydown(evt) {
-//     if (evt.code === "Escape") {
-//         instance.close();
-//     }
-// }
-// -----------------------
-//          {
-//         onShow: (instance) => {
-//          const closeEl = evt.code === "Escape"
-//         instance.element().querySelector('closeEl').onclick = instance.close
-//     }
-// }
-// ----------------------------------
-//     instance.show(() => {
-//         const closeEl = evt.code === "Escape"
-// 	instance.element().querySelector( 'closeEl' ).close();
-// });
+
